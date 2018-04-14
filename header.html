@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+    <title><?php echo $title;?></title>
+
+    <link rel="stylesheet" href="stsheet.css">
+    <script src="script.js"></script>
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light mb-4">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold mr-5" href="index.php">
+                <pre><img src="images/e4079ff0d8ff7d264731b31ff178a585.jpg" alt="Generic placeholder image"> MeloMania </pre>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
+                            <div class="input-group-append">
+                            <a class="btn btn-outline-secondary mr-5" style="border:0" href="searchResult.php">S</a>
+                            </div>
+                        </div>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <?php if (isset($_SESSION['user']) && intval($_SESSION['user'])===1) {} else {?>
+                    <li class="nav-item mx-3 <?php echo $active === 'register' ? 'font-weight-bold active':null;?>">
+                        <a class="btn btn-dark" href="register.php">Create Account</a>
+                    </li>
+                    
+                    <?php } if (isset($_SESSION['user']) && intval($_SESSION['user'])===1) {?>
+                    <li class="nav-item dropdown mr-5">
+                        Hi, <?php echo $_SESSION['name'];?>
+                    </li>
+                    <li class="nav-item dropdown mr-5">
+                        <a class="nav-link dropdown-toggle" style="background-color:white;" data-toggle="dropdown" href="profile.php" role="button" aria-haspopup="true" aria-expanded="false">Profile </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="profile.php">your info</a>
+                            <a class="dropdown-item" href="profile.php?action=edit">Edit</a>
+                            <a class="dropdown-item" href="#">History</a>
+                            <a class="dropdown-item" href="playlists.php">playlists</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="logout.php" class="btn btn-danger">Sign Out</a>
+                    </li>
+                        <?php } else { ?>
+                    <li class="nav-item">
+                        <a href="register.php?action=login" class="btn btn-dark">Sign In</a>
+                    </li>
+                        <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
